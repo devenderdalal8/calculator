@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/first"
+        android:title="Standard"
+        android:icon="@drawable/standard"/>
+    <item
+        android:id="@+id/second"
+        android:title="Scientific"
+        android:icon="@drawable/scienctific"/>
+    <item
+        android:id="@+id/third"
+        android:title="Unit"
+        android:icon="@drawable/area"/>
+</menu>
