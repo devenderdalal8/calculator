@@ -203,16 +203,16 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_weight="2">
-            <Button
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:id="@+id/backIntent"
-                android:background="@color/orange"
-                android:text="@string/larrow"
-                android:textSize="20dp"
-                android:onClick="onClick"
-                android:textColor="@color/white"
-                />
+<!--            <Button-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:id="@+id/backIntent"-->
+<!--                android:background="@color/orange"-->
+<!--                android:text="@string/larrow"-->
+<!--                android:textSize="20dp"-->
+<!--                android:onClick="onClick"-->
+<!--                android:textColor="@color/white"-->
+<!--                />-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

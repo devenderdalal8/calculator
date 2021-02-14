@@ -3,6 +3,7 @@ package scientific.maths.financial.multiple.converter.all.tools.solution.appcalc
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,6 +20,7 @@ public class UnitConverter extends AppCompatActivity  implements View.OnClickLis
         setContentView(R.layout.activity_unit_converter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         Button button = findViewById(R.id.area);
         button.setOnClickListener(this);
         Button button2 = findViewById(R.id.length);
@@ -76,5 +78,13 @@ public class UnitConverter extends AppCompatActivity  implements View.OnClickLis
 
         }
     }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

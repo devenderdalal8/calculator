@@ -2,6 +2,7 @@ package scientific.maths.financial.multiple.converter.all.tools.solution.appcalc
 
 import android.os.Bundle;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -23,6 +24,10 @@ public class UnitTemperature extends AppCompatActivity {
         setContentView(R.layout.activity_unit_temperature);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         e1=(EditText)findViewById(R.id.item1);
         e2=(EditText)findViewById(R.id.item2);
@@ -143,4 +148,13 @@ public class UnitTemperature extends AppCompatActivity {
             return temp;
         }
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

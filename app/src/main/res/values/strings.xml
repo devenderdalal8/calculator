@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App Calculator</string>
+    <string name="app_name">Calculator</string>
 
     <string name="action_settings">Settings</string>
     <string name="stdCal">Standard Calculator</string>
@@ -90,5 +90,7 @@
     <string name="larrow"><![CDATA[<]]></string>
     <string name="rarrow"><![CDATA[>]]></string>
     <string name="temperature">Temperature</string>
-    <string name="weight">Weight</string>>
+    <string name="weight">Weight</string>
+    <string name="Open">open</string>
+    <string name="Close">close</string>>
 </resources>

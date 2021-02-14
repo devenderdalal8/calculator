@@ -2,6 +2,7 @@ package scientific.maths.financial.multiple.converter.all.tools.solution.appcalc
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,10 @@ public class ScientificCal extends AppCompatActivity {
         setContentView(R.layout.activity_scientific_cal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         e1 = (EditText) findViewById(R.id.editText);
         e2 = (EditText) findViewById(R.id.editText2);
@@ -226,7 +231,7 @@ public class ScientificCal extends AppCompatActivity {
                 }
                 break;
 
-            case R.id.plus:
+            case R.id.plus2:
                 operationClicked("+");
                 break;
 
@@ -471,18 +476,12 @@ public class ScientificCal extends AppCompatActivity {
                 i.putExtra("calcName", "SCIENTIFIC");
                 startActivity(i);
                 break;
-            case R.id.intent:
-                Intent intent = new Intent(this, UnitConverter.class);
-                intent.putExtra("calcName", "UNIT CALCULATOR");
-                startActivity(intent);
-                break;
+
             case R.id.backIntent:
                 Intent intent2 = new Intent(this, StandardCal.class);
                 intent2.putExtra("calcName", "UNIT CALCULATOR");
                 startActivity(intent2);
                 break;
-
-
 
         }
     }
@@ -501,4 +500,14 @@ public class ScientificCal extends AppCompatActivity {
             }
         }
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

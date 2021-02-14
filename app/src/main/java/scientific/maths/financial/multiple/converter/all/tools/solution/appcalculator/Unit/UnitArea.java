@@ -2,6 +2,7 @@ package scientific.maths.financial.multiple.converter.all.tools.solution.appcalc
 
 import android.os.Bundle;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -25,6 +26,12 @@ public class UnitArea extends AppCompatActivity {
         setContentView(R.layout.activity_unit_area);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         e1=(EditText)findViewById(R.id.item1);
         e2=(EditText)findViewById(R.id.item2);
         s1=(Spinner)findViewById(R.id.spinner1);
@@ -32,8 +39,7 @@ public class UnitArea extends AppCompatActivity {
         ca=new ConvertingUnits.Area();
     }
 
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
         switch(v.getId())
         {
             case R.id.num0:
@@ -111,8 +117,7 @@ public class UnitArea extends AppCompatActivity {
         }
     }
 
-    public double evaluate(int item1,int item2,double value)
-    {
+    public double evaluate(int item1,int item2,double value) {
         double temp=0.0;
         if(item1==item2)
             return value;
@@ -161,4 +166,13 @@ public class UnitArea extends AppCompatActivity {
             return temp;
         }
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

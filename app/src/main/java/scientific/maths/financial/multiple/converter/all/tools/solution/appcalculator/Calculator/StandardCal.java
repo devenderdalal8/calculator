@@ -2,38 +2,110 @@ package scientific.maths.financial.multiple.converter.all.tools.solution.appcalc
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.fathzer.soft.javaluator.DoubleEvaluator;
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.Objects;
 
 import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Data.DBHelper;
 import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Data.ExtendedDoubleEvaluator;
 import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Data.History;
 import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.R;
+import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitArea;
 import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitConverter;
+import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitEMI;
+import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitFD;
+import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitLength;
+import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitLoan;
+import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitSIP;
+import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitTemperature;
+import scientific.maths.financial.multiple.converter.all.tools.solution.appcalculator.Unit.UnitWeight;
 
-public class StandardCal extends AppCompatActivity {
+public class StandardCal extends AppCompatActivity implements View.OnClickListener {
 
     private EditText e1,e2;
     private int count=0;
     private String expression="";
     private DBHelper dbHelper;
 
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_standard_cal);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
-        e1= findViewById(R.id.editText1);
-        e2= findViewById(R.id.editText2);
-        dbHelper=new DBHelper(this);
+        e1 = findViewById(R.id.editText1);
+        e2 = findViewById(R.id.editText2);
+        dbHelper = new DBHelper(this);
+        dl = findViewById(R.id.activity_main);
+        t = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
 
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        nv = findViewById(R.id.nv);
+        nv.setItemIconTintList(null);
+        nv.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            Intent intent;
+            switch (id) {
+                case R.id.area:
+                    intent = new Intent(StandardCal.this, UnitArea.class);
+                    startActivity(intent);
+                    break;
+                case R.id.length:
+                    intent = new Intent(StandardCal.this, UnitLength.class);
+                    startActivity(intent);
+                    break;
+                case R.id.weight:
+                    intent = new Intent(StandardCal.this, UnitWeight.class);
+                    startActivity(intent);
+                    break;
+                case R.id.tempearture:
+                    intent = new Intent(StandardCal.this, UnitTemperature.class);
+                    startActivity(intent);
+                    break;
+                case R.id.emi:
+                    intent = new Intent(StandardCal.this, UnitEMI.class);
+                    intent.putExtra("name", "UnitEMI");
+                    startActivity(intent);
+                    break;
+                case R.id.sip:
+                    intent = new Intent(StandardCal.this, UnitSIP.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.fd:
+                    intent = new Intent(StandardCal.this, UnitFD.class);
+                    startActivity(intent);
+                    break;
+                case R.id.loan:
+                    intent = new Intent(StandardCal.this, UnitLoan.class);
+                    startActivity(intent);
+                    break;
+
+            }
+            return true;
+        });
     }
 
     public void onClick(View v) {
@@ -240,11 +312,6 @@ public class StandardCal extends AppCompatActivity {
                 intent.putExtra("calcName", "SCIENTIFIC CALCULATOR");
                 startActivity(intent);
                 break;
-            case R.id.backIntent:
-                Intent intent2 = new Intent(this, UnitConverter.class);
-                intent2.putExtra("calcName", "UNIT CALCULATOR");
-                startActivity(intent2);
-                break;
         }
     }
 
@@ -265,6 +332,16 @@ public class StandardCal extends AppCompatActivity {
                 e1.setText(newText);
             }
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (t.onOptionsItemSelected(item)) {
+
+            return false;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

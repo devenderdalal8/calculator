@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/area"
+        android:icon="@drawable/area"
+        android:title="Area"/>
+    <item android:id="@+id/length"
+        android:icon="@drawable/length"
+        android:title="Length"/>
+    <item android:id="@+id/weight"
+        android:icon="@drawable/weights"
+        android:title="Weight"/>
+    <item android:id="@+id/tempearture"
+        android:icon="@drawable/temperature"
+        android:title="Temperature"/>
+    <item android:id="@+id/emi"
+        android:icon="@drawable/emi"
+        android:title="EMI Calculator"/>
+    <item android:id="@+id/sip"
+        android:icon="@drawable/sip"
+        android:title="SIP Calculator" />
+    <item android:id="@+id/fd"
+        android:icon="@drawable/fd"
+        android:title="Fixed Deposit Calculator" />
+    <item
+        android:id="@+id/loan"
+        android:icon="@drawable/loan"
+        android:title="Bank Loan Calculator" />
+
+</menu>
